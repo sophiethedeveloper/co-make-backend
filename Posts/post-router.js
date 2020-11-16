@@ -12,4 +12,36 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/:id", (req, res) => {
+  const newPost = { ...req.body, user_id: req.params.id };
+
+  Posts.addPost(newPost)
+    .then((post) => {
+      res.status(201).json(post);
+    })
+    .catch((error) => {
+      next({ message: error.message });
+    });
+});
+
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  Posts.getById(id)
+    .then((post) => {
+      if (post) {
+        return Posts.update(id, changes);
+      } else {
+        res.status(404).json({ message: "could not find post with given id" });
+      }
+    })
+    .then((updatedPost) => {
+      res.status(200).json(updatedPost);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: err.message });
+    });
+});
+
 module.exports = router;
