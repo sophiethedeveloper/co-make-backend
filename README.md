@@ -6,12 +6,13 @@ Backend for Build Week Project Co-make
 
 ### COMPLAINTS ENDPOINTS:
 
+
 - GET ALL POSTS: /api/posts/
 - POST: /api/posts/:id
 - PUT: /api/posts/:id
 - DELETE: /api/posts/:id
 
-### User Endpoints:
+### User Endpoints: 
 
 - Register New User: POST: /api/auth/register
 - Login: POST: /api/auth/login
