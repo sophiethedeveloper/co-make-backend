@@ -17,6 +17,7 @@ function getById(id) {
 }
 
 async function addPost(user) {
+  console.log("user", user);
   try {
     const [id] = await db("posts").insert(user, "id");
     return getById(id);
