@@ -20,7 +20,7 @@ router.post("/:id", (req, res) => {
       res.status(201).json(post);
     })
     .catch((error) => {
-      next({ message: error.message });
+      res.status(500).json({ error: error.message });
     });
 });
 
