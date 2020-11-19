@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { get } = require("../auth/auth-router");
 const Posts = require("../models/post-models");
 
 router.get("/", (req, res) => {
@@ -46,6 +45,7 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   Posts.remove(req.params.id)
+    // eslint-disable-next-line no-unused-vars
     .then((count) => {
       res.status(200).json({ message: "the post has been deleted" });
     })
