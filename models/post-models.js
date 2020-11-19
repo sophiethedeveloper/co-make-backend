@@ -27,8 +27,9 @@ async function addPost(user) {
   }
 }
 
-function update(id, changes) {
-  return db("posts").where({ id }).update(changes);
+async function update(id, changes) {
+  await db("posts").where({ id }).update(changes);
+  return db("posts").where({ id }).first();
 }
 
 async function remove(id) {
