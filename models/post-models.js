@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 const db = require("../database/db-config.js");
 
 module.exports = {
