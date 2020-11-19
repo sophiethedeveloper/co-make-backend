@@ -40,8 +40,9 @@ router.post("/login", (req, res) => {
       .then(([user]) => {
         if (user && bcrypt.compareSync(password, user.password)) {
           const token = makeToken(user);
+          const id = user.id;
 
-          res.status(200).json({ message: "welcome to co-make", token });
+          res.status(200).json({ message: "welcome to co-make", token, id });
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }
